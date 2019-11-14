@@ -17,6 +17,12 @@
       <version>2.5</version>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-catalina</artifactId>
+      <version>8.5.3</version>
+      <scope>provided</scope>
+    </dependency>
 
 
   </dependencies>
@@ -31,16 +37,34 @@
         </configuration>
       </plugin>
 
+      <!--      部署到本机tomcat上 -->
+      <!--      <plugin>
+              <groupId>org.apache.tomcat.maven</groupId>
+              <artifactId>tomcat7-maven-plugin</artifactId>
+              <configuration>
+                <url>http://localhost:8080/manager/text</url> &lt;!&ndash; 这个固定 &ndash;&gt;
+
+                <server>tomcat</server> &lt;!&ndash; 这个是Maven配置的ID &ndash;&gt;
+                <username>tomcat</username>&lt;!&ndash; 这个是Tomcat配置的User &ndash;&gt;
+                <password>tomcat</password>
+                <path>/hello</path> &lt;!&ndash; ${artifactId}以项目名称作为目录 &ndash;&gt;
+              </configuration>
+            </plugin>-->
+
+      <!--      集成tomcat -->
       <plugin>
         <groupId>org.apache.tomcat.maven</groupId>
         <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.2</version>
+        <!--控制tomcat端口号 -->
         <configuration>
-          <url>http://localhost:8080/manager/text</url> <!-- 这个固定 -->
-
-          <server>tomcat</server> <!-- 这个是Maven配置的ID -->
-          <username>tomcat</username><!-- 这个是Tomcat配置的User -->
-          <password>tomcat</password>
-          <path>/hello</path> <!-- ${artifactId}以项目名称作为目录 -->
+          <port>8081</port>
+          <!-- 发布到tomcat后的名称 -->
+          <!--/ 相当于把项目发布成ROOT -->
+          <path>/</path>
+          <uriEncoding>UTF-8</uriEncoding>
+          <!--  <finalName>love</finalName>
+          <server>tomcat7</server> -->
         </configuration>
       </plugin>
     </plugins>

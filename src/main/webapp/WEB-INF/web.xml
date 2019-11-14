@@ -10,10 +10,45 @@
     <param-value>lisi</param-value>
   </context-param>
 
+  <listener>
+    <listener-class>listener.Listener1</listener-class>
+  </listener>
+  <listener>
+    <listener-class>listener.Listener2</listener-class>
+  </listener>
+  <listener>
+    <listener-class>listener.Listener3</listener-class>
+  </listener>
+  <listener>
+    <listener-class>listener.Listener4</listener-class>
+  </listener>
+
+  <filter>
+    <filter-name>f1</filter-name>
+    <filter-class>filter.Filter1</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>f1</filter-name>
+    <url-pattern>*</url-pattern>
+  </filter-mapping>
+
+
+
+
+
   <servlet>
     <servlet-name>hello</servlet-name>
     <servlet-class>Hello</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>test</servlet-name>
+    <servlet-class>TestRequest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>test</servlet-name>
+    <url-pattern>/test</url-pattern>
+  </servlet-mapping>
+
   <servlet-mapping>
     <servlet-name>hello</servlet-name>
     <url-pattern>/**</url-pattern>
